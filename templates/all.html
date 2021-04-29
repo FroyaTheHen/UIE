@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <main class="main">
+    <section>
+      <p>And here it is. The library of all of them. Knoweledge collected by me for years. Precisley 3. How would I manage without it? - You ask. Completely same. Probabbly. But why would anyone want to live in a world where is no small talk and pop music?</p>
+      {% for row in entries %}
+        <article class="entry">
+          <div>
+            <time class="entry__date" datetime="{{ row[1] }}">• {{ row[1] }}</time>
+          </div>
+          <p class="entry__content">
+            <h4>{{ row[0] }}</h4>
+            {{ row[2] }}
+          </p>
+        </article>
+      {% endfor %}
+    </section>
+  </main>
+
+@{% endblock %}
