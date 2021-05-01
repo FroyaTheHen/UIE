@@ -2,30 +2,55 @@
 {% block content %}
   <main class="main">
     <section>
-      <h1>Add new expresion:</h1>
-      <form class="form" method="POST">
-        <p class="form__input">
-          <label for="entry" class="form__label">expresion:</label>
-          <textarea name="content" id="entry" class="form__textarea"></textarea>
-          <label for="entry" class="form__label">translation:</label>
-          <textarea name="translation" id="entry" class="form__textarea"></textarea>
-        </p>
-        <button type="submit" class="form__submit">Add</button>
-      </form>
+        <div class="container">
+            <p class="add_paragraph">add a new one:</p>
+            <form class="form" method="POST">
+                <p class="form__input">
+                    <div class="row">
+                        <div class="col"> 
+                            <label for="entry" class="form__label">expresion:</label>
+                            <textarea name="content" id="entry" class="form__textarea form-control"></textarea>
+                        </div>
+                        <div class="col">
+                            <label for="entry" class="form__label">translation:</label>
+                            <textarea name="translation" id="entry" class="form__textarea form-control"></textarea>
+                        </div>        
+                    </div>
+                </p>
+            <button type="submit" class="btn btn-outline-dark" id="add_button">add</button>
+            </form>
+            </div>    
+        </div>    
     </section>
     <section>
-      <h1>Recently added</h1>
-      {% for row in entries %}
-        <article class="entry">
-          <div>
-            <time class="entry__date" datetime="{{ row[1] }}">• {{ row[1] }}</time>
+
+      <div class="container">
+        <div class="add_paragraph">Recently added:</div>
+        <div class="row">
+          {% if quantity > 0 %}
+          <div class="col-sm text-center">
+            <h4>{{ entries[quantity-1][0] }}</h4>
+            <p> - {{ entries[quantity-1][2] }}</p>
+            <p class="text-muted text-center">{{ entries[quantity-1][1] }}</p>
           </div>
-          <p class="entry__content">
-            <h4>{{ row[0] }}</h4>
-            {{ row[2] }}
-          </p>
-        </article>
-      {% endfor %}
+          {% endif %}
+          {% if quantity > 1 %}
+          <div class="col-sm text-center">
+            <h4>{{ entries[quantity-2][0] }}</h4>
+            <p> - {{ entries[quantity-2][2] }}</p>
+            <p class="text-muted text-center">{{ entries[quantity-2][1] }}</p>
+          </div>
+          {% endif %}
+          {% if quantity > 2 %}
+          <div class="col-sm text-center">
+            <h4>{{ entries[quantity-3][0] }}</h4>
+            <p> - {{ entries[quantity-3][2] }}</p>
+            <p class="text-muted">{{ entries[quantity-3][1] }}</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    
     </section>
   </main>
 

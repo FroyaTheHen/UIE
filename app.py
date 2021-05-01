@@ -18,22 +18,23 @@ def create_app():
             entries.append((entry_content, formatted_date, entry_translation))
             app.db.entries.insert({"content": entry_content, "date": formatted_date, "translation": entry_translation})
         data = app.db.entries.find({})
-        dane = [( row['content'], row['date'], row['translation'] )
+        ordered_data = [( row['content'], row['date'], row['translation'] )
         for row in data]
-        return render_template("home.html", entries=dane)
+        quantity = len(ordered_data)
+        return render_template("home.html", entries=ordered_data, quantity=quantity)
 
     @app.route("/all")
     def all():
         data = app.db.entries.find({})
-        dane = [( row['content'], row['date'], row['translation'] )
+        ordered_data = [( row['content'], row['date'], row['translation'] )
         for row in data] 
-        return render_template("all.html", entries=dane)
+        return render_template("all.html", entries=ordered_data)
 
     @app.route("/random_expression")
     def random_expression():
         data = app.db.entries.find({})
-        dane = [( row['content'], row['date'], row['translation'] )
+        ordered_data = [( row['content'], row['date'], row['translation'] )
         for row in data] 
-        random_expression = random.choice(dane)
+        random_expression = random.choice(ordered_data)
         return render_template("random.html", random_expression = random_expression)
     return app

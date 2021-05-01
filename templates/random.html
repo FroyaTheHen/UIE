@@ -2,9 +2,24 @@
 {% block content %}
   <main class="main">
     <section>
-      <p>your random expression</p>
-        {{ random_expression }}
+
+    <div class="container">
+        <div class="jumbotron random_expression_card text-center">
+            <h4>{{ random_expression[0] }}</h4>
+            <hr class="my-4">
+            <p>{{ random_expression[2] }}</p>
+            <p class="lead">
+            <a class="btn btn-outline-dark" href="{{ url_for('random_expression') }}" role="button">one more</a>
+            </p>
+        </div>      
+    </div>
+
+
     </section>
   </main>
+
+
+
+
 
 {% endblock %}
