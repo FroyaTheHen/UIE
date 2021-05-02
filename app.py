@@ -2,10 +2,13 @@ from flask import Flask, render_template, request
 import datetime
 from pymongo import MongoClient
 import random
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    client = MongoClient("mongodb+srv://kzcepielik:GvhVAQ3pbvSqFnN@uslessicelandic.1cxkr.mongodb.net/test")
+    client = MongoClient(os.environ.get("MONGODB_URI"))
     app.db = client.UselessIcelandic
     entries = []
 
