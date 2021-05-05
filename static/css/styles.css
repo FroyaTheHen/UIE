@@ -44,5 +44,13 @@
 footer{
   padding-top: 50px;  
 }
-
-
+.auth_form{
+  max-width: 350px;
+}
+.form-group{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.alert{
+  margin-top: 20px;
+}

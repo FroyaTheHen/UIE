@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
   <main class="main">
+    <section>
+        <div class="container">
+            <p class="add_paragraph">add a new one:</p>
+            <form class="form" method="POST">
+                <p class="form__input">
+                    <div class="row">
+                        <div class="col"> 
+                            <label for="entry" class="form__label">expresion:</label>
+                            <textarea name="content" id="entry" class="form__textarea form-control"></textarea>
+                        </div>
+                        <div class="col">
+                            <label for="entry" class="form__label">translation:</label>
+                            <textarea name="translation" id="entry" class="form__textarea form-control"></textarea>
+                        </div>        
+                    </div>
+                </p>
+            <button type="submit" class="btn btn-outline-dark" id="add_button">add</button>
+            </form>
+            </div>    
+        </div>    
+    </section>
+    <section>
+
       <div class="container">
         <div class="add_paragraph">Recently added:</div>
         <div class="row">
