@@ -28,6 +28,7 @@ def create_app():
 
     @app.route("/add", methods=["GET", "POST"])
     def add():
+        message=""
         if "email" in session:
             if request.method == "POST":
                 entry_content = request.form.get("content")
@@ -35,11 +36,12 @@ def create_app():
                 formatted_date = datetime.datetime.today().strftime("%Y-%m-%d")
                 entries.append((entry_content, formatted_date, entry_translation))
                 app.db.entries.insert({"content": entry_content, "date": formatted_date, "translation": entry_translation})
+                message = "Successfully added the expression!"
             data = app.db.entries.find({})
             ordered_data = [( row['content'], row['date'], row['translation'] )
             for row in data]
             quantity = len(ordered_data)
-            return render_template("add.html", entries=ordered_data, quantity=quantity)
+            return render_template("add.html", entries=ordered_data, quantity=quantity, message=message)
         else:
             return home(message="you need to be logged in to access the page")
 
